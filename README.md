@@ -41,9 +41,10 @@ Finally, the training datasets (independent and dependent) are passed into the �
 
 After writing up all the code according to the other project, and thoroughly code commenting all the lines according to my understanding, I fit the decision tree to the training data and implemented the “predict()” function on the testing data for the first time. When I ran the code, it took nearly 30 mins to run the first time, and the model obtained an accuracy of only 63%. 
 
-![Screenshot 2024-11-12 at 12.17.15 PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/49bd02ca-c5e2-464b-a05d-9b876ffc79e8/4a8dc462-ddcf-4920-850f-d0aafc7821ba/Screenshot_2024-11-12_at_12.17.15_PM.png)
+<img width="207" alt="image" src="https://github.com/shree-3143/Breast-Cancer-Cell-Type-Detection/assets/130221650/f75dd75e-16fd-4264-8cce-593aded028e4](https://prod-files-secure.s3.us-west-2.amazonaws.com/49bd02ca-c5e2-464b-a05d-9b876ffc79e8/4a8dc462-ddcf-4920-850f-d0aafc7821ba/Screenshot_2024-11-12_at_12.17.15_PM.png">
 
-![Screenshot 2024-11-12 at 12.17.02 PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/49bd02ca-c5e2-464b-a05d-9b876ffc79e8/d73f7870-05ff-4c20-ac9c-54f1bd822bcb/Screenshot_2024-11-12_at_12.17.02_PM.png)
+<img width="207" alt="image" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/49bd02ca-c5e2-464b-a05d-9b876ffc79e8/d73f7870-05ff-4c20-ac9c-54f1bd822bcb/Screenshot_2024-11-12_at_12.17.02_PM.png">
+
 
 I found this to be very surprising. 30 mins of running time I thought was pretty diabolical - and my first instinct was to attribute this to the time complexity of the actual algorithm, or the way the algorithm has been written (with an object-oriented approach). Many of the methods in the DecisionTree class were recursive - they continued to split a node of the tree during training or continued to traverse across the tree and classify a data sample, until a leaf node was reached. However, this recursion would only be a problem if the extent to which it occurs is not limited - i.e., the recursive splitting of the node happens way too much, and the model is overfit to the data, possibly causing the appalling accuracy. 
 
