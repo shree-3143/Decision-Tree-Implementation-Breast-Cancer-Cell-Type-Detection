@@ -2,7 +2,7 @@
 
 <h3>Project summary:</h3>
 
-The created application is a cell type identifier for breast cancer. As there are 2 outcomes for the classification of each cell, this is a binary classification task. Therefore, implementing a decision tree classifier is ideal – they are utilised to classify data into 2 different groups, by evaluating whether a logical statement is true or false (Codecademy Team, 2024). Using the cell feature values of each cell, the decision tree model is fit to the training data, and the decision tree is built, by learning the patterns in the feature values that correlate to a particular diagnosis. This decision tree is then implemented on the test data; the output of which is the final prediction of the diagnoses for the cells in the test data. (Castillo, 2021). 
+The created application is a cell type identifier for breast cancer. As there are 2 outcomes for the classification of each cell, this is a binary classification task. Therefore, implementing a decision tree classifier is ideal – they are utilised to classify data into 2 different groups, by evaluating whether a logical statement is true or false. Using the cell feature values of each cell, the decision tree model is fit to the training data, and the decision tree is built, by learning the patterns in the feature values that correlate to a particular diagnosis. This decision tree is then implemented on the test data; the output of which is the final prediction of the diagnoses for the cells in the test data.
 
 
 <h3>About the dataset:</h3>
@@ -11,6 +11,8 @@ The Breast Cancer Wisconsin Diagnostic Dataset contains the cell-nuclei characte
 
 Link to dataset: 
 https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data
+
+### How the implementation code was written
 
 A decision tree is a hierarchical structure that comprises of a root node, internal nodes, and leaf nodes, with branches connecting to each of these. An object-oriented system, using Classes and Objects, can be utilised to model such a structure. 
 
