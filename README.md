@@ -41,11 +41,6 @@ Finally, the training datasets (independent and dependent) are passed into the �
 
 After writing up all the code according to the other project, and thoroughly code commenting all the lines according to my understanding, I fit the decision tree to the training data and implemented the “predict()” function on the testing data for the first time. When I ran the code, it took nearly 30 mins to run the first time, and the model obtained an accuracy of only 63%. 
 
-<img width="207" alt="image" src="https://github.com/shree-3143/Breast-Cancer-Cell-Type-Detection/assets/130221650/f75dd75e-16fd-4264-8cce-593aded028e4](https://prod-files-secure.s3.us-west-2.amazonaws.com/49bd02ca-c5e2-464b-a05d-9b876ffc79e8/4a8dc462-ddcf-4920-850f-d0aafc7821ba/Screenshot_2024-11-12_at_12.17.15_PM.png">
-
-<img width="207" alt="image" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/49bd02ca-c5e2-464b-a05d-9b876ffc79e8/d73f7870-05ff-4c20-ac9c-54f1bd822bcb/Screenshot_2024-11-12_at_12.17.02_PM.png">
-
-
 I found this to be very surprising. 30 mins of running time I thought was pretty diabolical - and my first instinct was to attribute this to the time complexity of the actual algorithm, or the way the algorithm has been written (with an object-oriented approach). Many of the methods in the DecisionTree class were recursive - they continued to split a node of the tree during training or continued to traverse across the tree and classify a data sample, until a leaf node was reached. However, this recursion would only be a problem if the extent to which it occurs is not limited - i.e., the recursive splitting of the node happens way too much, and the model is overfit to the data, possibly causing the appalling accuracy. 
 
 However, as seen below, the depth of the DecisionTree was limited to 2, meaning a root node can only split twice at the maximum. This means that the problem of the bad accuracy and the extremely long running time is not due to the recursion in the algorithm. 
@@ -61,19 +56,7 @@ This is actually very significant:
 - `right_y = right_dataset[: , -1]` selects all the rows from only the last column.
 - `right_dataset[:-1]` selects all rows and columns except the last row.
 
-The correct way of indexing is written below:
-
-![Screenshot 2024-11-12 at 1.05.33 PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/49bd02ca-c5e2-464b-a05d-9b876ffc79e8/91d59f83-4ef7-456a-9e77-7328b849bb31/Screenshot_2024-11-12_at_1.05.33_PM.png)
-
-As seen below, “right_y” is meant to extract the target values from the right node, after a split; in order to compute the information gain from the entire split (which is the weighted entropy of the child nodes subtracted from the entropy of the parent node). However, before I corrected the typo, the entropy for the right child node was being calculated as a function of the entire dataset being passed in; not just the target values (the diagnoses). Essentially, we should only be passing in the diagnosis column, to count the number of M or B (1 or 0) diagnoses in the dataset at that time, but the entire dataset was being passed, meaning the entropy was being calculated for the entirety of the dataset.
-
-![Screenshot 2024-11-12 at 1.51.23 PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/49bd02ca-c5e2-464b-a05d-9b876ffc79e8/3ad71662-5ebe-42b2-a88c-6b2456b930b7/Screenshot_2024-11-12_at_1.51.23_PM.png)
-
-Calculating weighted entropy, as part of the “information_gain()” function:
-
-![Screenshot 2024-11-12 at 2.14.19 PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/49bd02ca-c5e2-464b-a05d-9b876ffc79e8/572d1cd7-7735-4ef9-a6c6-049098fe105f/Screenshot_2024-11-12_at_2.14.19_PM.png)
-
-Therefore, the entropy was being calculated for a 2D array, much larger than just 1 specific column, which explains why the running time was so large, and the accuracy was horrendous. Fixing this typo dropped the running time from 30 minutes to only 13 seconds, which was very relieving. 
+“right_y” is meant to extract the target values from the right node, after a split; in order to compute the information gain from the entire split (which is the weighted entropy of the child nodes subtracted from the entropy of the parent node). However, before I corrected the typo, the entropy for the right child node was being calculated as a function of the entire dataset being passed in; not just the target values (the diagnoses). Essentially, we should only be passing in the diagnosis column, to count the number of M or B (1 or 0) diagnoses in the dataset at that time, but the entire dataset was being passed, meaning the entropy was being calculated for the entirety of the dataset - a 2D array, much larger than just 1 specific column, which explains why the running time was so large, and the accuracy was horrendous. Fixing this typo dropped the running time from 30 minutes to only 13 seconds, which was very relieving. 
 
 ### Real world applications + ethics
 
