@@ -62,3 +62,10 @@ This is actually very significant:
 ### Real world applications + ethics
 
 As stated before, the running time of the algorithm was 30 minutes, and the accuracy was also 63%. In a real life situation, if this algorithm (with the error not fixed) was utilised for a patient, the 30 minutes runtime could be enough for the patient to go into a critical condition, without yet being diagnosed. Additionally, it is imperative to address that the use of machine learning for cancer detection means that there are significant stakeholders, for false negative or false positive results. i.e., If a patient is diagnosed with a false positive when they should actually receive a Benign diagnosis, this may mean more resources will be consumed for unnecessary treatment. However, the worst case scenario would be when a patient is diagnosed with a false negative, when they should actually receive a Malignant diagnosis - this could be detrimental to the patient’s health, as the cancer would be ignored, without receiving the required treatment, potentially resulting in eventual death. Therefore, a 63% accuracy in the diagnosis could be disastrous in such a scenario.
+
+### Tutorials / Resources used for implementation:
+-	https://www.kaggle.com/code/spring1343/notebookd535228a06/edit
+-	https://www.youtube.com/watch?v=NSSOyhJBmWY&t=2907s
+
+
+
